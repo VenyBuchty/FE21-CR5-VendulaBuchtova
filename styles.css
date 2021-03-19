@@ -122,6 +122,7 @@ p {
 .card-container .card-body .card-title {
   color: #3c403d;
   font-weight: 800;
+  padding-bottom: 2rem;
 }
 
 .color-badge {
