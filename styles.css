@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  border: 1px solid black;
+  font-family: "Heebo", sans-serif;
+}
+
+body {
+  background-color: #daded4 !important;
+}
+
+.navbar-brand {
+  background-color: #ffffff;
+}
+
+.nav-menu {
+  background-color: #a3b3b6;
+  height: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: black;
+  font-weight: 700;
+}
+
+.about-me {
+  background-color: #a3bcb6;
+  height: 21rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.about-me h2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.about-me p {
+  padding: 0 1rem;
+}
+
+.section-text {
+  background-color: white;
+}
+
+.section-text h2 {
+  font-weight: 800;
+}
+
+.section-text p {
+  font-weight: 500;
+  font-style: italic;
+}
+/*# sourceMappingURL=styles.css.map */
