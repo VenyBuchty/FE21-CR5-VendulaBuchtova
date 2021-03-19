@@ -21,7 +21,7 @@ var Locations = /** @class */ (function () {
         this.zip_code = zip_code;
         this.address = address;
         this.image = image;
-        this.created = created;
+        this.created = (randomDate(new Date(2020, 0, 1), new Date(2021, 0, 3), 0, 24));
     }
     Locations.prototype.display = function () {
         var cardCreator = "<div class=\"col card-container\">\n                                    <div class=\"card\" style=\"width: 18rem;\">\n                                        <img src=\"" + this.image + "\" class=\"card-img-top\" alt=\"...\" style=\"object-fit: cover; height: 12rem;\">\n                                    <div class=\"card-body\">\n                                        <div class=\"d-flex flex-column justify-content-start\">\n                                            <h4 class=\"card-title text-center\">" + this.name + "</h4>\n                                        </div>\n                                        <div class=\"d-flex flex-column\">\n                                                    <span class=\"badge color-badge\"><i class=\"fas fa-map-marker-alt\"></i> Address:</span>\n                                                    <p class=\"card-text\">" + this.city + "</p>\n                                                    <p class=\"card-text\">" + this.zip_code + "</p>\n                                                    <p class=\"card-text\">" + this.address + "</p>\n                            ";
@@ -33,15 +33,43 @@ var Locations = /** @class */ (function () {
     return Locations;
 }());
 var locationsArr = [
-    new Locations("Palmenhaus Schönbrunn", "Vienna", 1130, "Schönbrunner Schloßstraße 47", "./img/place1.jpg", "03.11.2020, 12:23"),
-    new Locations("Walt Disney Concert Hall", "Los Angeles", 90012, "111 S Grand Ave", "./img/place2.jpg", "15.12.2020, 20:42"),
-    new Locations("Museum Montanelli Bocelo", "Praha", 11015, "Staroměstské nám. 1/12", "./img/place3.jpg", "08.09.2020, 08:35"),
-    new Locations("Parc zoologique de Paris", "Paris", 75012, " Avenue Daumesnil", "./img/place4.jpg", "24.10.2020, 10:15"),
+    new Locations("Palmenhaus Schönbrunn", "Vienna", 1130, "Schönbrunner Schloßstraße 47", "./img/place1.jpg", "2016-01-16T05:23:38"),
+    new Locations("Walt Disney Concert Hall", "Los Angeles", 90012, "111 S Grand Ave", "./img/place2.jpg", "2018-01-16T05:23:38"),
+    new Locations("Museum Montanelli Bocelo", "Praha", 11015, "Staroměstské nám. 1/12", "./img/place3.jpg", "2020-01-16T05:23:38"),
+    new Locations("Parc zoologique de Paris", "Paris", 75012, " Avenue Daumesnil", "./img/place4.jpg", "2021-01-16T05:23:38"),
 ];
 for (var _i = 0, locationsArr_1 = locationsArr; _i < locationsArr_1.length; _i++) {
     var value = locationsArr_1[_i];
     document.querySelector("[data-meta=\"places-cards\"]").innerHTML += value.display() + value.closeDiv();
 }
+/* SORTING FUNCTION for PLACES*/
+var sorting = document.querySelector("#sort");
+sorting.addEventListener("click", cardSort);
+var isAscending = true;
+function cardSort(e) {
+    if (e.target.id == "sort") {
+        /* remove old locationsArray */
+        var places = document.getElementById("places-cards");
+        places.innerHTML = "";
+        isAscending = !isAscending;
+        /* sort locationsArray */
+        locationsArr.sort(function (a, b) {
+            if (isAscending) {
+                return b.created - a.created;
+            }
+            else {
+                return a.created - b.created;
+            }
+        });
+    }
+    ;
+    /* create new sorted movieArray */
+    for (var _i = 0, locationsArr_2 = locationsArr; _i < locationsArr_2.length; _i++) {
+        var value = locationsArr_2[_i];
+        document.querySelector("[data-meta=\"places-cards\"]").innerHTML += value.display() + value.closeDiv();
+    }
+}
+;
 /* EXTENDOR RESTAURANT CLASS */
 var Restaurant = /** @class */ (function (_super) {
     __extends(Restaurant, _super);
@@ -68,6 +96,34 @@ for (var _a = 0, restaurantArr_1 = restaurantArr; _a < restaurantArr_1.length; _
     var value = restaurantArr_1[_a];
     document.querySelector("[data-meta=\"restaurant-cards\"]").innerHTML += value.display();
 }
+/* SORTING FUNCTION for RESTAURANT*/
+var sorting2 = document.querySelector("#sort");
+sorting2.addEventListener("click", cardSort2);
+var isAscending2 = true;
+function cardSort2(e) {
+    if (e.target.id == "sort") {
+        /* remove old restaurantArray */
+        var restaurants = document.getElementById("restaurant-cards");
+        restaurants.innerHTML = "";
+        isAscending2 = !isAscending2;
+        /* sort restaurantArray */
+        restaurantArr.sort(function (a, b) {
+            if (isAscending) {
+                return b.created - a.created;
+            }
+            else {
+                return a.created - b.created;
+            }
+        });
+    }
+    ;
+    /* create new sorted movieArray */
+    for (var _i = 0, restaurantArr_2 = restaurantArr; _i < restaurantArr_2.length; _i++) {
+        var value = restaurantArr_2[_i];
+        document.querySelector("[data-meta=\"restaurant-cards\"]").innerHTML += value.display();
+    }
+}
+;
 /* EXTENDOR EVENTS CLASS */
 var Events = /** @class */ (function (_super) {
     __extends(Events, _super);
@@ -93,4 +149,39 @@ var eventsArr = [
 for (var _b = 0, eventsArr_1 = eventsArr; _b < eventsArr_1.length; _b++) {
     var value = eventsArr_1[_b];
     document.querySelector("[data-meta=\"events-cards\"]").innerHTML += value.display();
+}
+/* SORTING FUNCTION for EVENTS*/
+var sorting3 = document.querySelector("#sort");
+sorting3.addEventListener("click", cardSort3);
+var isAscending3 = true;
+function cardSort3(e) {
+    if (e.target.id == "sort") {
+        /* remove old eventsArray */
+        var events = document.getElementById("events-cards");
+        events.innerHTML = "";
+        isAscending3 = !isAscending3;
+        /* sort eventsArray */
+        eventsArr.sort(function (a, b) {
+            if (isAscending) {
+                return b.created - a.created;
+            }
+            else {
+                return a.created - b.created;
+            }
+        });
+    }
+    ;
+    /* create new sorted movieArray */
+    for (var _i = 0, eventsArr_2 = eventsArr; _i < eventsArr_2.length; _i++) {
+        var value = eventsArr_2[_i];
+        document.querySelector("[data-meta=\"events-cards\"]").innerHTML += value.display();
+    }
+}
+;
+/* RANDOM DATE AND TIME FUNCTION */
+function randomDate(start, end, startHour, endHour) {
+    var date = new Date(+start + Math.random() * (end - start));
+    var hour = startHour + Math.random() * (endHour - startHour) | 0;
+    date.setHours(hour);
+    return date;
 }

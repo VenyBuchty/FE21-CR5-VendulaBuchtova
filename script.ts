@@ -14,8 +14,9 @@ class Locations {
         this.zip_code = zip_code;
         this.address = address;
         this.image = image;
-        this.created = created;
+        this.created = (randomDate(new Date(2020, 0, 1), new Date(2021, 0, 3), 0, 24));
         }
+
 
     display() : string {
     let cardCreator : string = `<div class="col card-container">
@@ -47,15 +48,48 @@ class Locations {
 }
 
 let locationsArr : Array <Locations> = [
-    new Locations("Palmenhaus Schönbrunn", "Vienna", 1130, "Schönbrunner Schloßstraße 47", "./img/place1.jpg", "03.11.2020, 12:23"),
-    new Locations("Walt Disney Concert Hall", "Los Angeles", 90012, "111 S Grand Ave", "./img/place2.jpg", "15.12.2020, 20:42"),
-    new Locations("Museum Montanelli Bocelo","Praha", 11015, "Staroměstské nám. 1/12", "./img/place3.jpg", "08.09.2020, 08:35"),
-    new Locations("Parc zoologique de Paris", "Paris", 75012, " Avenue Daumesnil", "./img/place4.jpg", "24.10.2020, 10:15"),
+    new Locations("Palmenhaus Schönbrunn", "Vienna", 1130, "Schönbrunner Schloßstraße 47", "./img/place1.jpg", "2016-01-16T05:23:38"),
+    new Locations("Walt Disney Concert Hall", "Los Angeles", 90012, "111 S Grand Ave", "./img/place2.jpg", "2018-01-16T05:23:38"),
+    new Locations("Museum Montanelli Bocelo","Praha", 11015, "Staroměstské nám. 1/12", "./img/place3.jpg", "2020-01-16T05:23:38"),
+    new Locations("Parc zoologique de Paris", "Paris", 75012, " Avenue Daumesnil", "./img/place4.jpg", "2021-01-16T05:23:38"),
 ]
 
 for (let value of locationsArr) {
     document.querySelector(`[data-meta="places-cards"]`).innerHTML += value.display() + value.closeDiv();
 }
+
+
+/* SORTING FUNCTION for PLACES*/
+
+
+let sorting = document.querySelector("#sort")
+sorting.addEventListener("click", cardSort);
+
+let isAscending = true;
+
+
+function cardSort (e){
+    if(e.target.id == "sort") {
+        /* remove old locationsArray */
+        let places = document.getElementById("places-cards")
+        places.innerHTML =""
+        isAscending = !isAscending;
+        /* sort locationsArray */
+        locationsArr.sort((a, b) => {
+        if (isAscending) {
+            return b.created - a.created;
+        } else {
+            return a.created - b.created;
+        }
+    })
+    };
+
+    /* create new sorted movieArray */
+   for (let value of locationsArr) {
+    document.querySelector(`[data-meta="places-cards"]`).innerHTML += value.display() + value.closeDiv();
+    }
+
+};
 
 
 
@@ -107,6 +141,41 @@ for (let value of restaurantArr) {
 
 }
 
+/* SORTING FUNCTION for RESTAURANT*/
+
+
+let sorting2 = document.querySelector("#sort")
+sorting2.addEventListener("click", cardSort2);
+
+let isAscending2 = true;
+
+
+function cardSort2 (e){
+    if(e.target.id == "sort") {
+        /* remove old restaurantArray */
+        let restaurants = document.getElementById("restaurant-cards")
+        restaurants.innerHTML =""
+        isAscending2 = !isAscending2;
+        /* sort restaurantArray */
+        restaurantArr.sort((a, b) => {
+        if (isAscending) {
+            return b.created - a.created;
+        } else {
+            return a.created - b.created;
+        }
+    })
+    };
+
+    /* create new sorted movieArray */
+   for (let value of restaurantArr) {
+    document.querySelector(`[data-meta="restaurant-cards"]`).innerHTML += value.display();
+    }
+
+};
+
+
+
+
 /* EXTENDOR EVENTS CLASS */
 
 class Events extends Locations {
@@ -148,6 +217,51 @@ let eventsArr : Array <Events> = [
 
 for (let value of eventsArr) {
     document.querySelector(`[data-meta="events-cards"]`).innerHTML += value.display();
+}
+
+/* SORTING FUNCTION for EVENTS*/
+
+
+let sorting3 = document.querySelector("#sort")
+sorting3.addEventListener("click", cardSort3);
+
+let isAscending3 = true;
+
+
+function cardSort3 (e){
+    if(e.target.id == "sort") {
+        /* remove old eventsArray */
+        let events = document.getElementById("events-cards")
+        events.innerHTML =""
+        isAscending3 = !isAscending3;
+        /* sort eventsArray */
+        eventsArr.sort((a, b) => {
+        if (isAscending) {
+            return b.created - a.created;
+        } else {
+            return a.created - b.created;
+        }
+    })
+    };
+
+    /* create new sorted movieArray */
+   for (let value of eventsArr) {
+    document.querySelector(`[data-meta="events-cards"]`).innerHTML += value.display();
+    }
+
+};
+
+
+
+
+
+
+/* RANDOM DATE AND TIME FUNCTION */
+function randomDate(start, end, startHour, endHour) {
+  var date = new Date(+start + Math.random() * (end - start));
+  var hour = startHour + Math.random() * (endHour - startHour) | 0;
+  date.setHours(hour);
+  return date;
 }
 
 
