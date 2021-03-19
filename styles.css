@@ -15,7 +15,7 @@ body {
 }
 
 .nav-menu {
-  background-color: #a3b3b6;
+  background-color: #a3bcb6;
   height: 3rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -23,7 +23,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: black;
+  color: #000000;
   font-weight: 700;
 }
 
@@ -36,6 +36,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 5rem 0;
 }
 
 .about-me h2 {
@@ -54,7 +55,7 @@ body {
 }
 
 .section-text {
-  background-color: white;
+  background-color: #ffffff;
 }
 
 .section-text h2 {
@@ -64,5 +65,25 @@ body {
 .section-text p {
   font-weight: 500;
   font-style: italic;
+}
+
+.card-container {
+  background-color: #3c403d;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2rem 0;
+  margin: 5rem 0.4rem;
+}
+
+.card-container .card {
+  border: 2px solid #ffffff;
+  padding: 0.4rem 0.8rem;
 }
 /*# sourceMappingURL=styles.css.map */
