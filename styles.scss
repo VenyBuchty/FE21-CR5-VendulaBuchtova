@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
 
 $olive: #a3bcb6;
 $green-leaf: #39603d;
@@ -10,7 +11,7 @@ $black: #000000;
 * {
   margin: 0;
   padding: 0;
-  border: 1px solid black;
+  //border: 1px solid $black;
   font-family: "Heebo", sans-serif;
 }
 
@@ -18,25 +19,43 @@ body {
   background-color: $tanly !important;
 }
 
+p {
+  margin-bottom: 0 !important;
+  font-weight: 500;
+}
+
 .navbar-brand {
   background-color: $white;
 }
 
 .nav-menu {
-  background-color: $olive;
+  background-color: $green-leaf;
   height: 3rem;
+  border-radius: 0 0 10px 10px;
   display: flex;
   align-items: center;
-  color: $black;
+  color: $tanly;
+  font-weight: 700;
+}
+
+.footer-menu {
+  background-color: $green-leaf;
+  height: 3rem;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  color: $tanly;
   font-weight: 700;
 }
 
 .about-me {
-  background-color: #a3bcb6;
+  background-color: $olive;
   height: 21rem;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   margin: 5rem 0;
+  color: $brown-grey;
   h2 {
     display: flex;
     justify-content: center;
@@ -46,10 +65,21 @@ body {
   p {
     padding: 0 1rem;
   }
+  img {
+    -webkit-box-shadow: 0px 0px 20px -10px rgba(60, 64, 61, 1);
+    -moz-box-shadow: 0px 0px 20px -10px rgba(60, 64, 61, 1);
+    box-shadow: 0px 0px 20px -10px rgba(60, 64, 61, 1);
+  }
 }
 
 .section-text {
   background-color: $white;
+  color: $brown-grey;
+  border-radius: 10px 10px 0 0;
+  padding: 0.8rem 0;
+  -webkit-box-shadow: 0px 0px 20px -10px rgba(60, 64, 61, 1);
+  -moz-box-shadow: 0px 0px 20px -10px rgba(60, 64, 61, 1);
+  box-shadow: 0px 0px 20px -10px rgba(60, 64, 61, 1);
   h2 {
     font-weight: 800;
   }
@@ -60,14 +90,65 @@ body {
 }
 
 .card-container {
-  background-color: $brown-grey;
+  background-color: $olive;
+  border-radius: 0 0 10px 10px;
   display: flex;
   justify-content: center;
-  align-items: center;
   padding: 2rem 0;
-  margin: 5rem 0.4rem;
+  margin: 5rem 0.3rem;
   .card {
     border: 2px solid $white;
-    padding: 0.4rem 0.8rem;
+    padding: 0.4rem 0;
+    -webkit-box-shadow: 0px 0px 20px -10px rgba(60, 64, 61, 1);
+    -moz-box-shadow: 0px 0px 20px -10px rgba(60, 64, 61, 1);
+    box-shadow: 0px 0px 20px -10px rgba(60, 64, 61, 1);
+  }
+
+  .card-body {
+    .card-title {
+      color: $brown-grey;
+      font-weight: 800;
+    }
+  }
+}
+
+.color-badge {
+  background-color: $green-leaf;
+}
+
+/* ------------MEDIA QUERIES---------------- */
+@media screen and (min-width: 470px) and (max-width: 1200px) {
+  .about-me {
+    height: 24rem;
+    h2 {
+      font-size: 1.5rem;
+      padding: 0 1rem;
+    }
+    p {
+      font-size: 0.75rem;
+      padding: 0 1rem;
+    }
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 470px) {
+  .about-me {
+    height: 23rem;
+    h2 {
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+    p {
+      font-size: 0.7rem;
+      padding: 0 1rem;
+    }
+  }
+
+  .card-container {
+    .card {
+      img {
+        display: none;
+      }
+    }
   }
 }
