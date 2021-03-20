@@ -87,7 +87,7 @@ class Restaurant extends Locations {
                                     <span class="badge color-badge"><i class="fas fa-utensils"></i> Cuisine:</span>
                                     <p class="card-text">${this.cuisine}</p>
                                     <span class="badge color-badge"><i class="fas fa-globe"></i> Web page:</span>
-                                    <p class="card-text">${this.web_address}</p>
+                                    <p class="card-text"><a href="${this.web_address}">${this.web_address}</a></p>
                                     <div class="card-footer text-center">
                                             <small class="fw-light">Created: ${this.created}</small>
                                     </div>
@@ -100,10 +100,10 @@ class Restaurant extends Locations {
 }
 
 let restaurantArr : Array <Restaurant> = [
-    new Restaurant("Osteria Francescana", "Modena", 41121, "Via Stella, 22", "./img/res1.jpg", 660834234, "american", "osterFrances@gmail.com"),
-    new Restaurant("El Celler de Roca", "Girona", 17007, "Carrer de Can Sunyer, 48", "./img/res2.jpg", 4354363463, "spanish", "cellerRoca@gmail.com"),
-    new Restaurant("Mirazur", "Menton", 6500, "30 Avenue Aristide Briand", "./img/res3.jpg", 823395432, "oriental", "mirazur@mail.com"),
-    new Restaurant("The Ledbury", "Nothing Hill, London", 1120, "127 Ledbury Rd", "./img/res4.jpg", 233358102, "rustical", "ledBurys@mail.com"),
+    new Restaurant("Osteria Francescana", "Modena", 41121, "Via Stella, 22", "./img/res1.jpg", 660834234, "italian", "https://osteriafrancescana.it"),
+    new Restaurant("El Celler de Roca", "Girona", 17007, "Carrer de Can Sunyer, 48", "./img/res2.jpg", 4354363463, "spanish", "https://cellercanroca.com"),
+    new Restaurant("Mirazur", "Menton", 6500, "30 Avenue Aristide Briand", "./img/res3.jpg", 823395432, "oriental", "https://www.mirazur.fr"),
+    new Restaurant("The Ledbury", "Nothing Hill, London", 1120, "127 Ledbury Rd", "./img/res4.jpg", 233358102, "rustical", "http://www.theledbury.com"),
 ]
 
 for (let value of restaurantArr) {

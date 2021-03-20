@@ -54,16 +54,16 @@ var Restaurant = /** @class */ (function (_super) {
         return _this;
     }
     Restaurant.prototype.display = function () {
-        var cardCreator = " " + _super.prototype.display.call(this) + "\n                                    <span class=\"badge color-badge\"><i class=\"fas fa-phone\"></i> Telephone:</span>\n                                    <p class=\"card-text\">" + this.tel_number + "</p>\n                                    <span class=\"badge color-badge\"><i class=\"fas fa-utensils\"></i> Cuisine:</span>\n                                    <p class=\"card-text\">" + this.cuisine + "</p>\n                                    <span class=\"badge color-badge\"><i class=\"fas fa-globe\"></i> Web page:</span>\n                                    <p class=\"card-text\">" + this.web_address + "</p>\n                                    <div class=\"card-footer text-center\">\n                                            <small class=\"fw-light\">Created: " + this.created + "</small>\n                                    </div>\n                                </div>       \n                            </div>\n                        </div>";
+        var cardCreator = " " + _super.prototype.display.call(this) + "\n                                    <span class=\"badge color-badge\"><i class=\"fas fa-phone\"></i> Telephone:</span>\n                                    <p class=\"card-text\">" + this.tel_number + "</p>\n                                    <span class=\"badge color-badge\"><i class=\"fas fa-utensils\"></i> Cuisine:</span>\n                                    <p class=\"card-text\">" + this.cuisine + "</p>\n                                    <span class=\"badge color-badge\"><i class=\"fas fa-globe\"></i> Web page:</span>\n                                    <p class=\"card-text\"><a href=\"" + this.web_address + "\">" + this.web_address + "</a></p>\n                                    <div class=\"card-footer text-center\">\n                                            <small class=\"fw-light\">Created: " + this.created + "</small>\n                                    </div>\n                                </div>       \n                            </div>\n                        </div>";
         return cardCreator;
     };
     return Restaurant;
 }(Locations));
 var restaurantArr = [
-    new Restaurant("Osteria Francescana", "Modena", 41121, "Via Stella, 22", "./img/res1.jpg", 660834234, "american", "osterFrances@gmail.com"),
-    new Restaurant("El Celler de Roca", "Girona", 17007, "Carrer de Can Sunyer, 48", "./img/res2.jpg", 4354363463, "spanish", "cellerRoca@gmail.com"),
-    new Restaurant("Mirazur", "Menton", 6500, "30 Avenue Aristide Briand", "./img/res3.jpg", 823395432, "oriental", "mirazur@mail.com"),
-    new Restaurant("The Ledbury", "Nothing Hill, London", 1120, "127 Ledbury Rd", "./img/res4.jpg", 233358102, "rustical", "ledBurys@mail.com"),
+    new Restaurant("Osteria Francescana", "Modena", 41121, "Via Stella, 22", "./img/res1.jpg", 660834234, "italian", "https://osteriafrancescana.it"),
+    new Restaurant("El Celler de Roca", "Girona", 17007, "Carrer de Can Sunyer, 48", "./img/res2.jpg", 4354363463, "spanish", "https://cellercanroca.com"),
+    new Restaurant("Mirazur", "Menton", 6500, "30 Avenue Aristide Briand", "./img/res3.jpg", 823395432, "oriental", "https://www.mirazur.fr"),
+    new Restaurant("The Ledbury", "Nothing Hill, London", 1120, "127 Ledbury Rd", "./img/res4.jpg", 233358102, "rustical", "http://www.theledbury.com"),
 ];
 for (var _a = 0, restaurantArr_1 = restaurantArr; _a < restaurantArr_1.length; _a++) {
     var value = restaurantArr_1[_a];
