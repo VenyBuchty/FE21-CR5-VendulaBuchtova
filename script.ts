@@ -1,20 +1,24 @@
-/* BASE CLASS */
+
+/* BASE CLASS LOCATIONS*/
 
 class Locations {
-    name;
-    city;
-    zip_code;
-    address;
-    image;
-    created;
+    //I also added the parameter "name", even though it was not written in the assignment.
+    name : string;
+    city : string;
+    zip_code : number;
+    address : string;
+    image : string;
+    created : any;
 
-    constructor (name: string, city: string, zip_code: number, address: string, image: string, created: string) {
+    constructor (name: string, city: string, zip_code: number, address: string, image: string) {
         this.name = name;
         this.city = city;
         this.zip_code = zip_code;
         this.address = address;
         this.image = image;
+        /* I decided to use randomDate function because I wanted to play with JS Date Object :-)*/
         this.created = (randomDate(new Date(2020, 0, 1), new Date(2021, 0, 3), 0, 24));
+        
         }
 
 
@@ -48,48 +52,15 @@ class Locations {
 }
 
 let locationsArr : Array <Locations> = [
-    new Locations("Palmenhaus Schönbrunn", "Vienna", 1130, "Schönbrunner Schloßstraße 47", "./img/place1.jpg", "2016-01-16T05:23:38"),
-    new Locations("Walt Disney Concert Hall", "Los Angeles", 90012, "111 S Grand Ave", "./img/place2.jpg", "2018-01-16T05:23:38"),
-    new Locations("Museum Montanelli Bocelo","Praha", 11015, "Staroměstské nám. 1/12", "./img/place3.jpg", "2020-01-16T05:23:38"),
-    new Locations("Parc zoologique de Paris", "Paris", 75012, " Avenue Daumesnil", "./img/place4.jpg", "2021-01-16T05:23:38"),
+    new Locations("Palmenhaus Schönbrunn", "Vienna", 1130, "Schönbrunner Schloßstraße 47", "./img/place1.jpg"),
+    new Locations("Walt Disney Concert Hall", "Los Angeles", 90012, "111 S Grand Ave", "./img/place2.jpg"),
+    new Locations("Museum Montanelli Bocelo","Praha", 11015, "Staroměstské nám. 1/12", "./img/place3.jpg"),
+    new Locations("Parc zoologique de Paris", "Paris", 75012, " Avenue Daumesnil", "./img/place4.jpg"),
 ]
 
 for (let value of locationsArr) {
     document.querySelector(`[data-meta="places-cards"]`).innerHTML += value.display() + value.closeDiv();
 }
-
-
-/* SORTING FUNCTION for PLACES*/
-
-
-let sorting = document.querySelector("#sort")
-sorting.addEventListener("click", cardSort);
-
-let isAscending = true;
-
-
-function cardSort (e){
-    if(e.target.id == "sort") {
-        /* remove old locationsArray */
-        let places = document.getElementById("places-cards")
-        places.innerHTML =""
-        isAscending = !isAscending;
-        /* sort locationsArray */
-        locationsArr.sort((a, b) => {
-        if (isAscending) {
-            return b.created - a.created;
-        } else {
-            return a.created - b.created;
-        }
-    })
-    };
-
-    /* create new sorted movieArray */
-   for (let value of locationsArr) {
-    document.querySelector(`[data-meta="places-cards"]`).innerHTML += value.display() + value.closeDiv();
-    }
-
-};
 
 
 
@@ -98,12 +69,12 @@ function cardSort (e){
 /* EXTENDOR RESTAURANT CLASS */
 
 class Restaurant extends Locations {
-    tel_number;
-    cuisine;
-    web_address;
+    tel_number : number;
+    cuisine : string;
+    web_address : string;
 
-    constructor (name: string, city: string, zip_code: number, address: string, image: string, tel_number: number, cuisine: string, web_address: string, created: string) {
-        super(name, city, zip_code, address, image, created);
+    constructor (name: string, city: string, zip_code: number, address: string, image: string, tel_number: number, cuisine: string, web_address: string) {
+        super(name, city, zip_code, address, image);
         this.tel_number = tel_number;
         this.cuisine = cuisine;
         this.web_address = web_address;
@@ -129,10 +100,10 @@ class Restaurant extends Locations {
 }
 
 let restaurantArr : Array <Restaurant> = [
-    new Restaurant("Osteria Francescana", "Modena", 41121, "Via Stella, 22", "./img/res1.jpg", 660834234, "american", "osterFrances@gmail.com", "29.10.2020, 07:12"),
-    new Restaurant("El Celler de Roca", "Girona", 17007, "Carrer de Can Sunyer, 48", "./img/res2.jpg", 4354363463, "spanish", "cellerRoca@gmail.com", "18.09.2020, 11:47"),
-    new Restaurant("Mirazur", "Menton", 6500, "30 Avenue Aristide Briand", "./img/res3.jpg", 823395432, "oriental", "mirazur@mail.com", "02.08.2020, 18:29"),
-    new Restaurant("The Ledbury", "Nothing Hill, London", 1120, "127 Ledbury Rd", "./img/res4.jpg", 233358102, "rustical", "ledBurys@mail.com", "13.02.2021, 15:02"),
+    new Restaurant("Osteria Francescana", "Modena", 41121, "Via Stella, 22", "./img/res1.jpg", 660834234, "american", "osterFrances@gmail.com"),
+    new Restaurant("El Celler de Roca", "Girona", 17007, "Carrer de Can Sunyer, 48", "./img/res2.jpg", 4354363463, "spanish", "cellerRoca@gmail.com"),
+    new Restaurant("Mirazur", "Menton", 6500, "30 Avenue Aristide Briand", "./img/res3.jpg", 823395432, "oriental", "mirazur@mail.com"),
+    new Restaurant("The Ledbury", "Nothing Hill, London", 1120, "127 Ledbury Rd", "./img/res4.jpg", 233358102, "rustical", "ledBurys@mail.com"),
 ]
 
 for (let value of restaurantArr) {
@@ -141,50 +112,17 @@ for (let value of restaurantArr) {
 
 }
 
-/* SORTING FUNCTION for RESTAURANT*/
-
-
-let sorting2 = document.querySelector("#sort")
-sorting2.addEventListener("click", cardSort2);
-
-let isAscending2 = true;
-
-
-function cardSort2 (e){
-    if(e.target.id == "sort") {
-        /* remove old restaurantArray */
-        let restaurants = document.getElementById("restaurant-cards")
-        restaurants.innerHTML =""
-        isAscending2 = !isAscending2;
-        /* sort restaurantArray */
-        restaurantArr.sort((a, b) => {
-        if (isAscending) {
-            return b.created - a.created;
-        } else {
-            return a.created - b.created;
-        }
-    })
-    };
-
-    /* create new sorted movieArray */
-   for (let value of restaurantArr) {
-    document.querySelector(`[data-meta="restaurant-cards"]`).innerHTML += value.display();
-    }
-
-};
-
-
 
 
 /* EXTENDOR EVENTS CLASS */
 
 class Events extends Locations {
-    event_date;
-    event_time;
-    ticket_price;
+    event_date : string;
+    event_time : string;
+    ticket_price : string;
 
-    constructor (name: string, city: string, zip_code: number, address: string, image: string,event_date: string, event_time: string, ticket_price: string, created: string) {
-        super(name, city, zip_code, address, image, created);
+    constructor (name: string, city: string, zip_code: number, address: string, image: string,event_date: string, event_time: string, ticket_price: string) {
+        super(name, city, zip_code, address, image);
         this.event_date = event_date;
         this.event_time = event_time;
         this.ticket_price = ticket_price;
@@ -209,59 +147,90 @@ class Events extends Locations {
 }
 
 let eventsArr : Array <Events> = [
-    new Events("DJ TemeraF", "Belfort", 14424, "Club DiAziO, Eurockeennes 173", "./img/event1.jpg", "01.07.2021", "21:00", "120 €", "09.01.2021, 14:10"),
-    new Events("Spring Food Festival", "Budapest", 1093, "Vámház krt. 1-3", "./img/event2.jpg", "04.04.2021", "09:00", "3 €", "20.02.2021, 00:41"),
-    new Events("Schwanensee", "Vienna", 1010, "Vienna Oper, Opernring 2", "./img/event3.jpg", "12.05.2021", "20:00", "203 €", "07.11.2020, 09:08"),
-    new Events("Zucchero", "Milano", 57391, "Stadium Theatre 2", "./img/event4.jpg", "14.08.2021", "19:00", "89 €", "18.10.2020, 12:37"),
+    new Events("DJ TemeraF", "Belfort", 14424, "Club DiAziO, Eurockeennes 173", "./img/event1.jpg", "01.07.2021", "21:00", "120 €"),
+    new Events("Spring Food Festival", "Budapest", 1093, "Vámház krt. 1-3", "./img/event2.jpg", "04.04.2021", "09:00", "3 €"),
+    new Events("Schwanensee", "Vienna", 1010, "Vienna Oper, Opernring 2", "./img/event3.jpg", "12.05.2021", "20:00", "203 €"),
+    new Events("Zucchero", "Milano", 57391, "Stadium Theatre 2", "./img/event4.jpg", "14.08.2021", "19:00", "89 €"),
 ]
 
 for (let value of eventsArr) {
     document.querySelector(`[data-meta="events-cards"]`).innerHTML += value.display();
 }
 
-/* SORTING FUNCTION for EVENTS*/
 
 
-let sorting3 = document.querySelector("#sort")
-sorting3.addEventListener("click", cardSort3);
-
-let isAscending3 = true;
 
 
-function cardSort3 (e){
-    if(e.target.id == "sort") {
-        /* remove old eventsArray */
+
+/* SORTING FUNCTIONS */
+
+
+let sorting_places = document.querySelector("#sort_places")
+sorting_places.addEventListener("click", cardSortHandler);
+
+let sorting_restaurants = document.querySelector("#sort_restaurants")
+sorting_restaurants.addEventListener("click", cardSortHandler);
+
+let sorting_events = document.querySelector("#sort_events")
+sorting_events.addEventListener("click", cardSortHandler);
+
+
+let isAscending = true;
+
+
+
+function cardSortHandler (e){
+    if(e.target.id == ("sort_places")) {
+        let places = document.getElementById("places-cards")
+        places.innerHTML =""
+        sortCards(locationsArr);
+        for (let value of locationsArr) {
+        document.querySelector(`[data-meta="places-cards"]`).innerHTML += value.display() + value.closeDiv();
+    }
+    }
+    if(e.target.id == ("sort_restaurants")) {
+        let restaurants = document.getElementById("restaurant-cards")
+        restaurants.innerHTML ="" 
+        sortCards(restaurantArr);
+        for (let value of restaurantArr) {
+        document.querySelector(`[data-meta="restaurant-cards"]`).innerHTML += value.display();
+        }
+    }
+    if(e.target.id == ("sort_events")) {
         let events = document.getElementById("events-cards")
-        events.innerHTML =""
-        isAscending3 = !isAscending3;
-        /* sort eventsArray */
-        eventsArr.sort((a, b) => {
+        events.innerHTML ="" 
+        sortCards(eventsArr);
+        for (let value of eventsArr) {
+        document.querySelector(`[data-meta="events-cards"]`).innerHTML += value.display();
+        }
+    }
+    
+
+};
+
+//I wasn't sure, which type should be Array, because I am using three different.
+function sortCards (arrayOfCards : Array <any>){
+    isAscending = !isAscending;
+        arrayOfCards.sort((a , b ) => {
         if (isAscending) {
             return b.created - a.created;
         } else {
             return a.created - b.created;
         }
-    })
-    };
-
-    /* create new sorted movieArray */
-   for (let value of eventsArr) {
-    document.querySelector(`[data-meta="events-cards"]`).innerHTML += value.display();
-    }
-
-};
-
-
+        })
+}
 
 
 
 
 /* RANDOM DATE AND TIME FUNCTION */
-function randomDate(start, end, startHour, endHour) {
-  var date = new Date(+start + Math.random() * (end - start));
-  var hour = startHour + Math.random() * (endHour - startHour) | 0;
-  date.setHours(hour);
-  return date;
+
+// I wasn't sure, which type should be "start" and "end". I tryied "Date" or "Number" but it wasn't accepted. 
+function randomDate(start : any, end : any, startHour : number, endHour : number) {
+    var date = new Date(+start + Math.random() * (end - start));
+    var hour = startHour + Math.random() * (endHour - startHour) | 0;
+    date.setHours(hour);
+    return date;
 }
 
 
